@@ -1,0 +1,103 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    text-decoration: none;
+}
+
+span {
+    font-family: 'Courier New';
+}
+
+img:hover {
+    outline: 1px solid red;   
+}
+
+img:active {
+    outline: 1px solid green;
+}
+
+body, main, .game-pics, .choices, .choice {
+    display: flex;
+}
+
+body, main, .choice {
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    background-color: blanchedalmond;
+    height: 100%;
+}
+
+main {
+    align-items: center;
+    flex: 1;
+    gap: 20px;
+}
+
+.special {
+    color: goldenrod;
+    animation: changecolor 0.5s;
+    animation-iteration-count: infinite;
+}
+
+footer {
+    background-color: gainsboro;
+}
+
+footer p {
+    font-size: 22px;
+    text-align: center;
+}
+
+h1 {
+    font-size: calc(110% + 2vw);
+    color: cornflowerblue;
+}
+
+p {
+    font-size: calc(70% + 2vw);
+}
+
+.game-pics img {
+    box-shadow: 0 2px 4px rgb(214, 196, 168);
+    padding: 10px;
+    max-width: 200px;
+    height: auto;
+    flex: 1 1 auto;
+}
+
+.game-pics {
+    gap: 30px;
+    max-width: 90%;
+}
+
+.choices {
+    gap: 10px;
+}
+
+.choice {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.score {
+    font-size: 4vw;
+    text-align: center;
+}
+
+@keyframes changecolor {
+    from {
+        color: red;
+    }
+
+    to {
+        color: goldenrod;
+    }
+}

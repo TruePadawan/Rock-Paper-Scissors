@@ -71,5 +71,3 @@ function game()
     else if (comp > user) return "Computer Wins!"
     else return "Tie!";
 }
-
-console.log(game());
