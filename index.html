@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" src="scripts.js" defer></script>
 </head>
 
 <body>
@@ -13,9 +13,9 @@
         <h1>Rock. Paper. Scissors.</h1>
         <p class="special">Choose your Weapon</p>
         <div class="game-pics">
-            <img src="resources/rocks.png" alt="Illustration of a Rock">
-            <img src="resources/paper.png" alt="Illustration of a Paper">
-            <img src="resources/scissors.png" alt="Illustration of a Scissors">
+            <img data-key="ROCK" src="resources/rocks.png" alt="Illustration of a Rock">
+            <img data-key="PAPER" src="resources/paper.png" alt="Illustration of a Paper">
+            <img data-key="SCISSORS" src="resources/scissors.png" alt="Illustration of a Scissors">
         </div>
 
         <div class="choices">
@@ -30,6 +30,7 @@
         </div>
 
         <p class="result">Waiting for Result...</p>
+        <button disabled="true">Replay</button>
     </main>
     
     <footer>

@@ -7,26 +7,15 @@ function computerPlay()
 {
     const val = generateNum(0,2);
     const table = {
-        0: "Rock",
-        1: "Paper",
-        2: "Scissors"
+        0: "ROCK",
+        1: "PAPER",
+        2: "SCISSORS"
     };
     return table[val];
 }
 
-
-/* PLAYGROUND LOGIC
-===================
-    IF WHAT THE COMPUTER SELECTED IS THE COMPLEMENT OF {PLAYER} IN 'WINTABLE', I WIN
-    ELSE
-        I LOSE
-*/
-
 function playRound(playerSelection, computerSelection)
 {
-    playerSelection = playerSelection.toUpperCase();
-    computerSelection = computerSelection.toUpperCase();
-
     let winTable = {
         "ROCK" : "SCISSORS",
         "SCISSORS" : "PAPER",
@@ -47,27 +36,70 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-/* LOGIC OF GAME
-=================
-    LOOP THROUGH 5 TIMES, AT EACH ITERATION
-        PLAY A ROUND AND RECORD SCORE OF WINNER AND LOSER
- */
+let player = document.querySelector(".player > .score");
+let computer = document.querySelector(".pc > .score");
+let resultUIText = document.querySelector(".result");
+let replayButton = document.querySelector("button");
 
-function game()
+function game(e) {
+  let player_choice = e.target.dataset.key;
+  let computer_choice = computerPlay();
+  let result = playRound(player_choice, computer_choice);
+
+  if (result === 1) {
+    updatePlayerScore();
+    resultUIText.textContent = `${player_choice} BEATS ${computer_choice}`;
+  } else if (result === 0) {
+    updateComputerScore();
+    resultUIText.textContent = `${player_choice} LOSES TO ${computer_choice}`;
+  } else {
+    resultUIText.textContent = `${player_choice} CANCELS OUT ${computer_choice}`;
+  }
+}
+
+
+function updatePlayerScore()
 {
-    let user = 0;
-    let comp = 0;
+    
+    let currentScore = Number(player.textContent);
+    player.textContent = ++currentScore;
+}
 
-    for (let i = 0; i < 5; i++)
-    {
-        let compPick = computerPlay();
-        let userPick = prompt("Enter your pick [Rock, Paper, Scissors]");
-        let result = playRound(userPick, compPick);
-        if (result === 1) ++user;
-        else if (result === 0) ++comp;
-    }
+function updateComputerScore()
+{
+    
+    let currentScore = Number(computer.textContent);
+    computer.textContent = ++currentScore;
+}
 
-    if (user > comp) return "User Wins!"
-    else if (comp > user) return "Computer Wins!"
-    else return "Tie!";
+const options = document.querySelectorAll("img");
+options.forEach((option) => {
+    option.addEventListener('click', (e) => {
+        if (Number(player.textContent) < 5 && Number(computer.textContent) < 5)
+        {
+            game(e);
+            playerScore = Number(player.textContent);
+            computerScore = Number(computer.textContent);
+
+            if (playerScore == 5 || computerScore == 5)
+            {
+                if (playerScore == computerScore) resultUIText.textContent = "A Tie!";
+                if (playerScore > computerScore) resultUIText.textContent = "You Win!";
+                if (playerScore < computerScore) resultUIText.textContent = "You Lose!";
+                replayButton.disabled = false;
+            }
+        }
+    });
+});
+
+replayButton.addEventListener('click', () => {
+    resetUI();
+});
+
+function resetUI()
+{
+    player.textContent = "0";
+    computer.textContent = "0";
+    resultUIText.textContent = "Waiting for Result...";
+    replayButton.disabled = true;
 }

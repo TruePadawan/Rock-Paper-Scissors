@@ -8,10 +8,6 @@ html {
     text-decoration: none;
 }
 
-span {
-    font-family: 'Courier New';
-}
-
 img:hover {
     outline: 1px solid red;   
 }
@@ -31,6 +27,7 @@ body, main, .choice {
 body {
     margin: 0;
     background-color: blanchedalmond;
+    font-family: 'Courier New';
     height: 100%;
 }
 
@@ -57,7 +54,7 @@ footer p {
 
 h1 {
     font-size: calc(110% + 2vw);
-    color: cornflowerblue;
+    color: rgb(34, 37, 39);
 }
 
 p {
@@ -68,6 +65,7 @@ p {
     box-shadow: 0 2px 4px rgb(214, 196, 168);
     padding: 10px;
     max-width: 200px;
+    width: 100%;
     height: auto;
     flex: 1 1 auto;
 }
@@ -90,6 +88,26 @@ p {
 .score {
     font-size: 4vw;
     text-align: center;
+}
+
+button {
+    margin: 15px;
+    padding: 17px;
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid crimson;
+}
+
+button:hover {
+    background-color: crimson;
+}
+
+button:active {
+    background-color: rgb(156, 61, 80);
+}
+
+button:disabled {
+    color: grey;
 }
 
 @keyframes changecolor {
